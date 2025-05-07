@@ -1941,7 +1941,7 @@ export abstract class BaseInvite<WithCounts extends boolean = boolean> extends B
   public get expiresAt(): Date | null;
   public get expiresTimestamp(): number | null;
   public readonly channelId: Snowflake | null;
-  public approximateMemberCount: WithCounts extends true ? number : number | null;
+  public approximateMemberCount: WithCounts extends true ? number : null;
   public get url(): string;
   public static InvitesPattern: RegExp;
   public toString(): string;
@@ -1960,7 +1960,7 @@ export class GuildInvite<WithCounts extends boolean = boolean> extends BaseInvit
   public uses: number | null;
   public maxUses: number | null;
   public temporary: boolean | null;
-  public approximatePresenceCount: WithCounts extends true ? number : number | null;
+  public approximatePresenceCount: WithCounts extends true ? number : null;
   public get deletable(): boolean;
   public delete(reason?: string): Promise<void>;
 }
@@ -5046,7 +5046,7 @@ export interface Caches {
   // TODO: GuildChannelManager: [manager: typeof GuildChannelManager, holds: typeof GuildChannel];
   GuildEmojiManager: [manager: typeof GuildEmojiManager, holds: typeof GuildEmoji];
   GuildForumThreadManager: [manager: typeof GuildForumThreadManager, holds: typeof ThreadChannel<true>];
-  GuildInviteManager: [manager: typeof GuildInviteManager, holds: GuildInvite];
+  GuildInviteManager: [manager: typeof GuildInviteManager, holds: typeof GuildInvite];
   // TODO: GuildManager: [manager: typeof GuildManager, holds: typeof Guild];
   GuildMemberManager: [manager: typeof GuildMemberManager, holds: typeof GuildMember];
   GuildMessageManager: [manager: typeof GuildMessageManager, holds: typeof Message<true>];
