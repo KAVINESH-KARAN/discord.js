@@ -4256,7 +4256,7 @@ export class GuildBanManager extends CachedManager<Snowflake, GuildBan, GuildBan
   ): Promise<BulkBanResult>;
 }
 
-export class GuildInviteManager extends DataManager<string, GuildInvite, InviteResolvable> {
+export class GuildInviteManager extends DataManager<string, GuildInvite, GuildInviteResolvable> {
   private constructor(guild: Guild, iterable?: Iterable<RawInviteData>);
   public guild: Guild;
   public create(channel: GuildInvitableChannelResolvable, options?: InviteCreateOptions): Promise<GuildInvite>;
@@ -6257,6 +6257,7 @@ export interface InviteCreateOptions {
 }
 
 export type InviteResolvable = string;
+export type GuildInviteResolvable = string;
 
 export interface LifetimeFilterOptions<Key, Value> {
   excludeFromSweep?: (value: Value, key: Key, collection: LimitedCollection<Key, Value>) => boolean;
