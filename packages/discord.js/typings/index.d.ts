@@ -1929,7 +1929,7 @@ export class InteractionWebhook {
   public fetchMessage(message: Snowflake | '@original'): Promise<Message>;
 }
 
-export abstract class BaseInvite<WithCounts extends boolean = boolean> extends Base {
+export class BaseInvite<WithCounts extends boolean = boolean> extends Base {
   protected constructor(client: Client<true>, data: RawInviteData);
   public readonly type: InviteType;
   public readonly code: string;
@@ -6236,14 +6236,15 @@ export interface InviteGenerationOptions {
   scopes: readonly OAuth2Scopes[];
 }
 
-export type GuildInvitableChannelResolvable =
+export type GuildInvitableChannel =
   | TextChannel
   | VoiceChannel
   | AnnouncementChannel
   | StageChannel
   | ForumChannel
-  | MediaChannel
-  | Snowflake;
+  | MediaChannel;
+
+export type GuildInvitableChannelResolvable = GuildInvitableChannel | Snowflake;
 
 export interface InviteCreateOptions {
   temporary?: boolean;
